@@ -35,12 +35,12 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // 文档标题
-                .title("demo服务端API")
+                .title("Boot-API")
                 .contact(new Contact("hly", "http://www.baidu.com", ""))
                 // 文档描述
                 .licenseUrl("http://localhost:8080/")
                 .termsOfServiceUrl("http://localhost:8080/")
-                .description("demo服务端接口")
+                .description("boot-api")
                 .termsOfServiceUrl("boot-api")
                 .version("1.0")
                 .build();
