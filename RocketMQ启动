@@ -1,0 +1,21 @@
+
+安装 https://blog.csdn.net/robinson_911/article/details/86685205
+配置 https://www.jianshu.com/p/b25c8f9521ce
+
+cd /Users/sunxiaohu/dev/rocketmq-all-4.2.0-bin-release
+
+启动路由
+	nohup sh bin/mqnamesrv & 
+查看查看namaserver日志
+	tail -f ~/logs/rocketmqlogs/namesrv.log	
+停止 nameserver
+	sh bin/mqshutdown namesrv 
+
+
+
+启动broker
+	 nohup sh bin/mqbroker -n localhost:9876 & 
+ 查看broker日志
+ 	 tail -f ~/logs/rocketmqlogs/broker.log
+ 停止 broker
+ 	 sh bin/mqshutdown broker 
