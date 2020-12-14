@@ -83,7 +83,7 @@ public class ControllerAspect {
     public void doAfterReturning(Object ret) {
         endTime = System.currentTimeMillis();
         log.info("请求结束时间 : {}", LocalDateTimeUtils.getLocalDateTime(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss:SSS"));
-        log.info("请求耗时 : {}", (endTime - startTime));
+        log.info("请求耗时 : {}", (endTime - startTime) + "毫秒");
         // 处理完请求，返回内容
         log.info("请求返回 : {}", JSON.toJSONString(ret));
     }
