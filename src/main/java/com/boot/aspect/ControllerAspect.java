@@ -1,6 +1,7 @@
 package com.boot.aspect;
 
 import com.alibaba.fastjson.JSON;
+import com.boot.util.IpUtil;
 import com.boot.util.LocalDateTimeUtils;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +60,7 @@ public class ControllerAspect {
         log.info("请求开始时间：{}", LocalDateTimeUtils.getLocalDateTime(LocalDateTime.now(), "yyyy-MM-dd HH:mm:ss:SSS"));
         log.info("请求Url : {}", request.getRequestURL().toString());
         log.info("请求方式 : {}", request.getMethod());
-        log.info("请求ip : {}", request.getRemoteAddr());
+        log.info("请求ip : {}", IpUtil.getIp(request));
         log.info("请求内容类型 : {}", request.getContentType());
         log.info("请求参数 : {}", Arrays.toString(joinPoint.getArgs()));
         // 系统信息
