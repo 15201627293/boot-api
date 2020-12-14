@@ -1,12 +1,13 @@
 package com.boot;
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.CharsetUtil;
-import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.IdUtil;
 import com.alibaba.fastjson.JSON;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @Classname Test
@@ -15,9 +16,9 @@ import java.util.List;
  */
 public class Test {
 
-
     public static void main(String[] args) {
-//        cloneByStream();
+
+        //        cloneByStream();
 //        toStr();
 //        toIntArray();
 //        toIntArray2();
@@ -27,9 +28,51 @@ public class Test {
 //        toDBC();
 //        toHex();
 //        hexToStr();
-        strToUnicode();
-        unicodeToStr();
+//        strToUnicode();
+//        unicodeToStr();
+//        for(int i = 0; i < 10000; i++){
+//            System.out.println(get32());
+//        }
+
+
+        final Set<String> snowflakeSet = Collections.synchronizedSet(new HashSet<>());
+
+        final int count = 100;
+        final CountDownLatch latch = new CountDownLatch(count);
+        for (int i = 0; i < count; i++) {
+            new Thread(() -> {
+                snowflakeSet.add(snowflake32());
+
+                latch.countDown();
+            }).start();
+        }
+
+        try {
+            latch.await();
+        } catch (InterruptedException ignored) {
+        }
+
+        assert snowflakeSet.size() == count;
+        System.out.println(snowflakeSet);
     }
+
+    public static String snowflake32() {
+        final Snowflake snowflake = IdUtil.getSnowflake(1L, 1L);
+        return String.format("%d%s", System.currentTimeMillis(), snowflake.nextIdStr());
+    }
+
+    public static String get32(){
+        Random rand = new Random();
+        StringBuffer sb=new StringBuffer();
+        for (int i=1;i<=32;i++){
+            int randNum = rand.nextInt(9)+1;
+            String num=randNum+"";
+            sb=sb.append(num);
+        }
+       return String.valueOf(sb);
+    }
+
+
 
 
 
