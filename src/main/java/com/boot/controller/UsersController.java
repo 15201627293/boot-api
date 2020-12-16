@@ -72,20 +72,20 @@ public class UsersController {
     @PostMapping("/login")
     @ApiImplicitParams({@ApiImplicitParam(paramType = "header", dataType = "String", name = "sercet", value = "密钥")})
     public ResultModel login(
-            @ApiParam(value = "用户名", required = true) @RequestParam(value = "userName",  required = true) String userName,
+            @ApiParam(value = "用户名", required = true) @RequestParam(value = "userName", required = true) String userName,
             @ApiParam(value = "密码", required = true) @RequestParam(value = "passWord", required = true) String passWord) {
         User queryUser = new User();
         queryUser.setUserName(userName);
         User user = userService.detail(queryUser);
         passWord = passWord.length() == 32 ? passWord : DigestUtils.md5DigestAsHex(passWord.getBytes());
-        if(null == user){
+        if (null == user) {
             return new ResultModel().error("用户名不存在");
         }
         String pwd = userService.getPwd(passWord, user.getSalt());
         if (!PassWordUtil.equals(pwd, user.getPassWord())) {
             return new ResultModel().error("用户名或密码错误");
         }
-        redisUtil.set("user_info_"+ user.getId(), user, 1800);
+        redisUtil.set("user_info_" + user.getId(), user, 1800);
         Map<String, Object> map = TokenUtil.accessToken(user);
         return new ResultModel().success(map);
     }
@@ -98,13 +98,13 @@ public class UsersController {
         User queryUser = new User();
         queryUser.setUserName(userDto.getUserName());
         User detail = userService.detail(queryUser);
-        if(null != detail){
+        if (null != detail) {
             return new ResultModel().error("用户名已存在");
         }
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
         userService.insert(user);
-        redisUtil.set("user_info_"+ user.getId(), user, 1800);
+        redisUtil.set("user_info_" + user.getId(), user, 1800);
         Map<String, Object> map = TokenUtil.accessToken(user);
         return new ResultModel().success(map);
     }
@@ -145,7 +145,7 @@ public class UsersController {
             @ApiImplicitParam(paramType = "header", dataType = "String", name = "Authorization"),
     })
     public void excelExport(HttpServletRequest request, HttpServletResponse response,
-                                   @ApiParam(value = "from") @RequestParam(value = "from", defaultValue = "1") String from) {
+                            @ApiParam(value = "from") @RequestParam(value = "from", defaultValue = "1") String from) {
         User user = new User();
         List<User> users = userService.queryAll(user);
         redisUtil.set("user", user);
