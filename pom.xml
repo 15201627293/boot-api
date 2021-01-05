@@ -291,6 +291,11 @@
             <artifactId>screw-core</artifactId>
             <version>1.0.5</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.smallbun.screw</groupId>-->
+<!--            <artifactId>screw-extension</artifactId>-->
+<!--            <version>1.0.5</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
