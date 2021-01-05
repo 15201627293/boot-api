@@ -1,4 +1,4 @@
-package com.boot.excel;
+package com.boot.excel.model;
 
 import java.lang.annotation.*;
 

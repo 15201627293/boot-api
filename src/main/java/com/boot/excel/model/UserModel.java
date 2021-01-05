@@ -1,4 +1,4 @@
-package com.boot.excel;
+package com.boot.excel.model;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
