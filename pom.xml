@@ -285,17 +285,20 @@
             <version>2.3.30</version>
         </dependency>
 
-        <!-- screw -->
-        <dependency>
-            <groupId>cn.smallbun.screw</groupId>
-            <artifactId>screw-core</artifactId>
-            <version>1.0.5</version>
-        </dependency>
+        <!-- screw-extension 还没有发布 -->
 <!--        <dependency>-->
 <!--            <groupId>cn.smallbun.screw</groupId>-->
 <!--            <artifactId>screw-extension</artifactId>-->
 <!--            <version>1.0.5</version>-->
 <!--        </dependency>-->
+
+        <!--canal -->
+        <dependency>
+            <groupId>com.alibaba.otter</groupId>
+            <artifactId>canal.client</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
