@@ -23,17 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RedisController {
 
-
-    private Logger logger = LoggerFactory.getLogger(RedisController.class);
-
     @Autowired
     private RedisUtil redisUtil;
-    
+
     @ApiOperation(value = "redis用户列表接口")
     @GetMapping("/list")
     @ApiImplicitParams({@ApiImplicitParam(paramType = "header", dataType = "String", name = "sercet", value = "密钥")})
-    public ResultModel list( @ApiParam(value = "from") @RequestParam(value = "from", defaultValue = "1") String from) {
-        PageInfo<User> pageInfo = (PageInfo<User>)redisUtil.get("pageInfo");
+    public ResultModel list(@ApiParam(value = "from") @RequestParam(value = "from", defaultValue = "1") String from) {
+        PageInfo<User> pageInfo = (PageInfo<User>) redisUtil.get("pageInfo");
         return new ResultModel().success(pageInfo);
     }
 
@@ -41,7 +38,7 @@ public class RedisController {
     @GetMapping("/detail")
     @ApiImplicitParams({@ApiImplicitParam(paramType = "header", dataType = "String", name = "sercet", value = "密钥")})
     public ResultModel detail(@ApiParam(value = "from") @RequestParam(value = "from", defaultValue = "1") String from) {
-        User user = (User)redisUtil.get("user");
+        User user = (User) redisUtil.get("user");
         return new ResultModel().success(user);
     }
 }

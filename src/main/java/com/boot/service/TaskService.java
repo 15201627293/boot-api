@@ -12,6 +12,5 @@ import java.util.concurrent.Future;
  */
 public interface TaskService {
 
-
     Future<String> task(List<T> list, Integer renovateBatch);
 }

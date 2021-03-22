@@ -87,7 +87,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 密码获取
-     * @param pwd 密码
+     *
+     * @param pwd  密码
      * @param salt 盐
      * @return
      */
@@ -96,7 +97,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String password = "";
         if (StringUtil.isBlank(pwd)) {
             password = pwd.length() == pwdLength ? pwd : DigestUtils.md5DigestAsHex(pwd.getBytes());
-        }else{
+        } else {
             password = DigestUtils.md5DigestAsHex(defaultPwd.getBytes());
         }
         String userPwd = PassWordUtil.sha256((salt + password).getBytes());

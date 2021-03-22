@@ -19,13 +19,13 @@ public class HttpResponseUtil {
 
     public static final String CONTENT_TYPE_JSON = "application/json; charset=utf-8";
     public static final String CONTENT_TYPE_TEXT = "text/plain; charset=utf-8";
-    private static Logger logger = LoggerFactory.getLogger(HttpResponseUtil.class);
+    private static Logger log = LoggerFactory.getLogger(HttpResponseUtil.class);
 
     public static void returnJson(HttpServletResponse res, String jsonStr) {
         try {
             writeResponse(jsonStr, CONTENT_TYPE_JSON, res);
         } catch (IOException e) {
-            logger.error("", e);
+            log.error("", e);
         }
     }
 
@@ -34,7 +34,7 @@ public class HttpResponseUtil {
         try {
             writeResponse(jsonStr, CONTENT_TYPE_JSON, res);
         } catch (IOException e) {
-            logger.error("", e);
+            log.error("", e);
         }
     }
 
@@ -71,7 +71,7 @@ public class HttpResponseUtil {
             //开启异步时，无需flush，异步完成，通知servlet返回响应
             req.getAsyncContext().complete();
         } catch (IOException e) {
-            logger.error("", e);
+            log.error("", e);
         } finally {
             if (pw != null) {
                 pw.close();

@@ -24,7 +24,7 @@ public class UserImportListener extends ExcelImportListener<UserModel> {
 
     @Override
     public void saveData(List<UserModel> dataList) {
-        logger.info("SaveData size: {}", dataList.size());
+        log.info("SaveData size: {}", dataList.size());
         dataList.forEach(userModel -> {
             User user = new User();
             BeanUtils.copyProperties(userModel, user);

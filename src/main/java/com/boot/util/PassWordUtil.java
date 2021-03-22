@@ -12,7 +12,7 @@ public class PassWordUtil {
 
     /**
      * @description: 256加密
-     * @Param:  * @param bt
+     * @Param: * @param bt
      * @return: java.lang.String
      * @author:
      * @time: 2020/9/1 2:07 下午
@@ -45,6 +45,7 @@ public class PassWordUtil {
 
     /**
      * 密码校验
+     *
      * @param pwd1
      * @param pwd2
      * @return

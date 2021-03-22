@@ -21,12 +21,6 @@ public class TaskServiceImpl implements TaskService {
 
     private static final Logger log = LoggerFactory.getLogger(TaskServiceImpl.class);
 
-
-
-    public void task(List<T> list) {
-
-    }
-
     @Override
     @Async
     public Future<String> task(List<T> list, Integer renovateBatch) {
@@ -34,11 +28,11 @@ public class TaskServiceImpl implements TaskService {
         Long begin = System.currentTimeMillis();
         for (int i = 0; i < list.size(); i++) {
             //逻辑处理
-            log.info("[更新 第{}批次 第{}个数据, 手机号为:{}]", renovateBatch, i + 1, customerOwner.getMobile());
+            log.info("[更新 第{}批次 第{}个数据]", renovateBatch, i + 1);
         }
         Long time = System.currentTimeMillis() - begin;
         System.out.println("车主发放批次");
-        log.info("[数据处理] [第{}批次] [结束] [更新数 = {}], [更新耗时 = {} 秒]", renovateBatch, customerOwners.size(), time / 1000);
-        return new AsyncResult<>("[数据处理][第"+renovateBatch+"批次] [结束]");
+        log.info("[数据处理] [第{}批次] [结束] [更新数 = {}], [更新耗时 = {} 秒]", renovateBatch, list.size(), time / 1000);
+        return new AsyncResult<>("[数据处理][第" + renovateBatch + "批次] [结束]");
     }
 }

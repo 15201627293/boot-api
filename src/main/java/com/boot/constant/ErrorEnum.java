@@ -6,8 +6,8 @@ package com.boot.constant;
  * Date 2020/2/17
  **/
 public enum ErrorEnum {
-    SUCCESS(200,"success","成功"),
-    FAIL(400,"fail","失败"),
+    SUCCESS(200, "success", "成功"),
+    FAIL(400, "fail", "失败"),
     BadRequest(400, "BadRequest", "Bad Request Parameter."),
     Forbidden(403, "Forbidden", "The resources is forbidden to visit."),
     NotFound(404, "NotFound", "The specified resource does not exist."),
@@ -23,7 +23,7 @@ public enum ErrorEnum {
     MissingParameter(400, "MissingParameter", "The request you input is missing some required parameters."),
     OperationAborted(409, "OperationAborted", "A conflicting conditional operation is currently in progress against this resource."),
     ExecuteFailed(417, "ExecuteFailed", "Failed to execute"),
-    PARAM_ERROR(400,"param error","参数异常");
+    PARAM_ERROR(400, "param error", "参数异常");
     public int httpCode;
     public String errCode;
     public String errMsg;

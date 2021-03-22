@@ -12,36 +12,35 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel("通用接口返回对象")
 public class ResultModel<T> {
 
-    @ApiModelProperty(required = true,notes = "结果码",example = "200")
+    @ApiModelProperty(required = true, notes = "结果码", example = "200")
     private int status;
-    @ApiModelProperty(required = true,notes = "时间戳",example = "1567425139000")
+    @ApiModelProperty(required = true, notes = "时间戳", example = "1567425139000")
     private long time;
-    @ApiModelProperty(required = true,notes = "返回信息",example = "SUCCESS")
+    @ApiModelProperty(required = true, notes = "返回信息", example = "SUCCESS")
     private String message;
-    @ApiModelProperty(required = true,notes = "返回数据",example = "{\"name\":\"blues\"}")
+    @ApiModelProperty(required = true, notes = "返回数据", example = "{\"name\":\"blues\"}")
     private T content;
 
 
-
-    public ResultModel<T> success(T content){
+    public ResultModel<T> success(T content) {
         this.status = 200;
         this.message = "SUCCESS";
         this.content = content;
-        this.time=System.currentTimeMillis();
+        this.time = System.currentTimeMillis();
         return this;
     }
 
-    public ResultModel<T> success(){
+    public ResultModel<T> success() {
         this.status = 200;
         this.message = "SUCCESS";
-        this.time=System.currentTimeMillis();
+        this.time = System.currentTimeMillis();
         return this;
     }
 
-    public ResultModel<T> error(String msg){
+    public ResultModel<T> error(String msg) {
         this.status = -1;
         this.message = msg;
-        this.time=System.currentTimeMillis();
+        this.time = System.currentTimeMillis();
         return this;
     }
 

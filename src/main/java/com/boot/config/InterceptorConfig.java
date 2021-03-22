@@ -24,7 +24,7 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/**/login", "/**/register")
-                .excludePathPatterns("/swagger-resources/**", "/csrf", "/", "/error", "/webjars/**", "/v2/**", "/doc.html/**","/swagger-ui.html/**");
+                .excludePathPatterns("/swagger-resources/**", "/csrf", "/", "/error", "/webjars/**", "/v2/**", "/doc.html/**", "/swagger-ui.html/**");
     }
 
     @Override

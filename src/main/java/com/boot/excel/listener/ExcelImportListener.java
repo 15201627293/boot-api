@@ -15,7 +15,7 @@ import java.util.List;
  */
 public abstract class ExcelImportListener<T> extends AnalysisEventListener<T> {
 
-    protected final Logger logger = LoggerFactory.getLogger(getClass());
+    protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
      * 每隔3000条存储数据库
@@ -42,7 +42,7 @@ public abstract class ExcelImportListener<T> extends AnalysisEventListener<T> {
     public void doAfterAllAnalysed(AnalysisContext context) {
         // 最后一次保存
         saveData(dataList);
-        logger.info("All data is parsed!");
+        log.info("All data is parsed!");
     }
 
     /**

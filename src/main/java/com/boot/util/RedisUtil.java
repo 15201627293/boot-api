@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public final class RedisUtil {
 
-    private Logger logger =  LoggerFactory.getLogger(RedisUtil.class);
+    private Logger logger = LoggerFactory.getLogger(RedisUtil.class);
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -603,6 +603,7 @@ public final class RedisUtil {
 
     /**
      * 加锁
+     *
      * @param key   key
      * @param value 当前时间+超时时间
      * @return
@@ -613,11 +614,11 @@ public final class RedisUtil {
             return true;
         }
         //避免死锁，且只让一个线程拿到锁
-        String currentValue = (String)redisTemplate.opsForValue().get(key);
+        String currentValue = (String) redisTemplate.opsForValue().get(key);
         //如果锁过期了
         if (!StringUtils.isEmpty(currentValue) && Long.parseLong(currentValue) < System.currentTimeMillis()) {
             //获取上一个锁的时间
-            String oldValues = (String)redisTemplate.opsForValue().getAndSet(key, value);
+            String oldValues = (String) redisTemplate.opsForValue().getAndSet(key, value);
             /*
                只会让一个线程拿到锁
                如果旧的value和currentValue相等，只会有一个线程达成条件，因为第二个线程拿到的oldValue已经和currentValue不一样了
@@ -632,12 +633,13 @@ public final class RedisUtil {
 
     /**
      * 解锁
+     *
      * @param key
      * @param value
      */
     public void unlock(String key, String value) {
         try {
-            String currentValue = (String)redisTemplate.opsForValue().get(key);
+            String currentValue = (String) redisTemplate.opsForValue().get(key);
             if (!StringUtils.isEmpty(currentValue) && currentValue.equals(value)) {
                 redisTemplate.opsForValue().getOperations().delete(key);
             }

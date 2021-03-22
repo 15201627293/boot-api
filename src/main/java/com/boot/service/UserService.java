@@ -30,10 +30,11 @@ public interface UserService {
 
     /**
      * 用户详情
+     *
      * @param user
      * @return
      */
-    User detail(User user) ;
+    User detail(User user);
 
     /**
      * 新增数据
@@ -45,7 +46,8 @@ public interface UserService {
 
     /**
      * 密码获取
-     * @param pwd 密码
+     *
+     * @param pwd  密码
      * @param salt 盐
      * @return
      */

@@ -34,13 +34,14 @@ public class TokenUtil {
 
     /**
      * 获取 accessToken
+     *
      * @param user
      * @return
      */
-    public static Map<String, Object> accessToken(User user){
-        BasicOAuthToken token=getAccessToken();
+    public static Map<String, Object> accessToken(User user) {
+        BasicOAuthToken token = getAccessToken();
 //        addAccessToken(token.getAccessToken(), user.getId()+"");
-        Map<String, Object> map=new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("accessToken", token.getAccessToken());
         map.put("expiresIn", token.getExpiresIn());
         map.put("user", user);
@@ -49,6 +50,7 @@ public class TokenUtil {
 
     /**
      * 生成accessToken
+     *
      * @return
      */
     public static BasicOAuthToken getAccessToken() {

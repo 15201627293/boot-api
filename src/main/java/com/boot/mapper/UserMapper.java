@@ -23,6 +23,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 用户详情
+     *
      * @param user
      * @return
      */

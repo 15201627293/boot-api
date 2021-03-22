@@ -20,7 +20,7 @@ public class UserModelUtil {
                 UserModel userModel = new UserModel();
                 userModel.setUserName(user.getUserName());
                 userModel.setName(user.getName());
-                userModel.setSex(user.getSex() == null ?"":user.getSex()==1?"男":"女");
+                userModel.setSex(user.getSex() == null ? "" : user.getSex() == 1 ? "男" : "女");
                 userModel.setCreateTime(DateUtils.localDateToString(DateUtils.asLocalDateTime(user.getCreateTime())));
                 userMedalModelList.add(userModel);
             });

@@ -39,8 +39,6 @@ import java.util.Map;
 @RestController
 public class UsersController {
 
-    private Logger logger = LoggerFactory.getLogger(UsersController.class);
-
     @Autowired
     private UserService userService;
 

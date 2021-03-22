@@ -20,17 +20,15 @@ import java.net.UnknownHostException;
 @Controller
 @Configuration
 public class LogConfig {
-    private static final Logger LOG = LoggerFactory.getLogger(LogConfig.class);
-
-    @Bean
-    public void logMethod() {
-        LOG.info("==========print log==========");
-    }
-
     /**
      * 获取日志对象，构造函数传入当前类，查找日志方便定位
      */
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private static final Logger log = LoggerFactory.getLogger(LogConfig.class);
+
+    @Bean
+    public void logMethod() {
+        log.info("==========print log==========");
+    }
 
     @Value("${log.home}")
     private String logUrl;

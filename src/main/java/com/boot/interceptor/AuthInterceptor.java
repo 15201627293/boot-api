@@ -74,7 +74,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
         // 查看token
         String token = TokenUtil.getToken(request);
-        if(StringUtils.isBlank(token)){
+        if (StringUtils.isBlank(token)) {
             throw new RuntimeException("没有凭证或凭证不正确");
         }
         return true;

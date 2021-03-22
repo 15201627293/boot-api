@@ -55,7 +55,7 @@ import java.util.Map;
  * @Created by hly
  */
 public class HttpUtil {
-    private static Logger logger = LoggerFactory.getLogger(HttpUtil.class);
+    private static Logger log = LoggerFactory.getLogger(HttpUtil.class);
 
 
     private static PoolingHttpClientConnectionManager connMgr;
@@ -192,7 +192,7 @@ public class HttpUtil {
         try {
             HttpGet httpPost = new HttpGet(apiUrl);
             HttpResponse response = httpclient.execute(httpPost);
-            logger.info("执行状态码:{}", response.getStatusLine().getStatusCode());
+            log.info("执行状态码:{}", response.getStatusLine().getStatusCode());
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 InputStream instream = entity.getContent();
