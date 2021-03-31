@@ -9,6 +9,8 @@ import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 /**
@@ -35,4 +37,39 @@ public class TaskServiceImpl implements TaskService {
         log.info("[数据处理] [第{}批次] [结束] [更新数 = {}], [更新耗时 = {} 秒]", renovateBatch, list.size(), time / 1000);
         return new AsyncResult<>("[数据处理][第" + renovateBatch + "批次] [结束]");
     }
+
+    //https://so.csdn.net/so/search/blog?q=%E5%BC%82%E6%AD%A5&t=blog&p=1&s=0&tm=0&lv=-1&ft=0&l=&u=u012839098
+    // 异步处理数据 可用在接口逻辑复杂或者接口处理耗时长
+    public Future<Double> getPriceAsync(String product) {
+        return CompletableFuture.supplyAsync(() -> calculatePrice(product));
+    }
+    public Future<Double> getPriceAsync1(String product) {
+        //创建CompletableFuture 对象，它会包含计算的结果
+        CompletableFuture<Double> futurePrice = new CompletableFuture<>();
+        //在另一个线程中以异步方式执行计算
+        new Thread(() -> {
+            double price = calculatePrice(product);
+            //需长时间计算的任务结 束并得出结果时，设置 Future的返回值
+            futurePrice.complete(price);
+        }).start();
+        // 无需等待还没结束的计算，直接返回Future对象
+        return futurePrice;
+    }
+
+    private double calculatePrice(String product) {
+        //一个模拟的延迟方法
+        delay();
+        return new Random().nextDouble() * product.charAt(0) + product.charAt(1);
+    }
+
+    public static void delay() {
+        int delay = 1000;
+        //int delay = 500 + RANDOM.nextInt(2000);
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
